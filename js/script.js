@@ -1,6 +1,9 @@
 const pokemonName = document.querySelector('.pokemon__name');
 const pokemonNumber = document.querySelector('.pokemon__number');
 const pokemonImage = document.querySelector('.pokemon__image');
+const pokemonType = document.querySelector('.pokemon__type');
+const pokemonWeight = document.querySelector('.pokemon__weight');
+const pokemonHeight = document.querySelector('.pokemon__height');
 
 const form = document.querySelector('.form');
 const input = document.querySelector('.input__search');
@@ -29,6 +32,9 @@ const renderPokemon = async (pokemon) => {
         pokemonImage.style.display = 'block';
         pokemonName.innerHTML = data.name;
         pokemonNumber.innerHTML = data.id;
+        pokemonType.innerHTML = `Type: ${data.types.map(type => type.type.name).join(', ')}`;
+        pokemonWeight.innerHTML = `Weight: ${data.weight / 10} kg`;
+        pokemonHeight.innerHTML = `Height: ${data.height / 10} m`;
         pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
         input.value = '';
         searchPokemon = data.id;
